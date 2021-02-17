@@ -1,0 +1,26 @@
+"""crud_agenda URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from apps.agenda.views import index_agenda, crear_agenda, editar_agenda, borrar_agenda
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path("", index_agenda, name="index"),
+    path("crear/", crear_agenda, name="crear"),
+    path("editar/<int:id>/", editar_agenda, name="editar"),
+    path("borrar/<int:id>/", borrar_agenda, name="borrar")
+]

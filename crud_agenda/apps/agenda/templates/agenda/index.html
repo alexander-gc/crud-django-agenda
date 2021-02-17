@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+                <h1> Agenda - TodoList  </h1>
+                <br>
+                <br>
+                <table class="border border-dark table table-hover table-bordered">
+                        <thead>
+                            <tr class="bg-info text-white">
+                                <th> # </th>
+                                <th> Nombre de la tarea</th>
+                                <th> Descripción de la tarea </th>
+                                <th> Opciones </th>
+                            </tr>
+                        </thead>
+            
+                    <tbody>
+                        {% for agenda in agenda_lista %} 
+                            <tr>
+                                <td>{{ agenda.numero }}</td> 
+                                <td>{{ agenda.nombre }}</td> 
+                                <td> {{ agenda.descripcion }} </td>
+                                <td>
+                                    <a href="{% url 'editar' id=agenda.id %} " class="btn btn-warning"> Editar </a>
+                                    <a href="{% url 'borrar' id=agenda.id %} " class="btn btn-danger"> Finalizado </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>  
+                
+                </table>
+
+                <a href="{% url 'crear' %}" class="btn btn-success"> Agregar tema </a>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
